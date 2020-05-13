@@ -5,6 +5,7 @@ import com.sample.spring.web.dto.PostsResponseDto;
 import com.sample.spring.web.dto.PostsSaveRequestDto;
 import com.sample.spring.web.dto.PostsUpdateRequestDto;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,5 +33,11 @@ public class PostsApiController {
     @PutMapping("/api/v1/posts/{id}")
     public Long update(@RequestBody PostsUpdateRequestDto postsUpdateRequestDto, @PathVariable Long id) {
         return postsService.update(id, postsUpdateRequestDto);
+    }
+
+    @DeleteMapping("/api/v1/posts/{id}")
+    public Long delete(@PathVariable Long id) {
+        postsService.delete(id);
+        return id;
     }
 }
