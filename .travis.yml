@@ -19,3 +19,20 @@ notifications:
   email:
     recipients:
       - tries1@naver.com
+
+before_deploy:
+  - zip -r spring-aws-sample-was *
+  - mkdir -p deploy
+  - mv spring-aws-sample-was.zip deploy/spring-aws-sample-was
+
+deploy:
+  - provider: s3
+    access_key_id: $AWS_ACCESS_KEY # at travis config setting
+    secret_access_key: $AWS_SECRET_KEY # at travis config setting
+
+    bucket: spring-aws-sample-build
+    region: ap-northeast-2
+    skip_cleanup: true
+    acl: private # zip 파일접근을 private으로
+    local_dir: deploy # before_deploy에서 생성한 디렉토리
+    wait-until-deployed: true
