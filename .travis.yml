@@ -36,3 +36,15 @@ deploy:
     acl: private # zip 파일접근을 private으로
     local_dir: deploy # before_deploy에서 생성한 디렉토리
     wait-until-deployed: true
+
+  - provider: codedeploy
+    access_key_id: $AWS_ACCESS_KEY # at travis config setting
+    secret_access_key: $AWS_SECRET_KEY # at travis config setting
+
+    bucket: spring-aws-sample-build
+    key: spring-aws-sample-was.zip
+    bundle_type: zip
+    application: spring-aws-was
+    deployment_group: spring-aws-group
+    region: ap-northeast-2
+    wait-until-deployed: true
