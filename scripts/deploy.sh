@@ -5,7 +5,7 @@ PROJECT_NAME=spring-aws-sample
 cd $REPOSITORY/$PROJECT_NAME/
 
 echo "> 빌드 파일 복사"
-cp $REPOSITORY/zip/*.jar $REPOSITORY/
+cp /home/ec2-user/app/step1/*.jar $REPOSITORY/
 
 echo "> 현재 구동중인 어플리케이션 PID 확인"
 CURRENT_PID=$(pgrep -fl ${PROJECT_NAME} | grep jar | awk '{print $1}')
