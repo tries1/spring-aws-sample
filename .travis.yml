@@ -47,7 +47,7 @@ deploy:
     secret_access_key: $AWS_SECRET_KEY # at travis config setting
 
     bucket: spring-aws-sample-build
-    key: spring-aws-sample-was
+    key: spring-aws-sample-was.zip
     bundle_type: zip
     application: spring-aws-was
     deployment_group: spring-aws-group
