@@ -17,18 +17,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .headers().frameOptions().disable()
-            .and()
+                .and()
                 .authorizeRequests()
-                .antMatchers("/", "/css/**","/images/**","/js/**","/h2-console/**").permitAll()
+                .antMatchers("/", "/css/**", "/images/**", "/js/**", "/h2-console/**", "/profile").permitAll()
                 .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                 .anyRequest()
                 .authenticated()
-            .and()
+                .and()
                 .logout()
-                    .logoutSuccessUrl("/")
-            .and()
+                .logoutSuccessUrl("/")
+                .and()
                 .oauth2Login()
-                    .userInfoEndpoint()
-                        .userService(customOAuth2UserService);
+                .userInfoEndpoint()
+                .userService(customOAuth2UserService);
     }
 }

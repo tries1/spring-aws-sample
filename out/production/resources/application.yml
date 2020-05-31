@@ -8,3 +8,14 @@ spring:
     include: oauth
   session:
     store-type: jdbc
+
+---
+
+spring:
+  profiles: real
+    include: oauth
+  jpa:
+    show-sql: false
+    properties.hibernate.dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  session:
+    store-type: jdbc
