@@ -1,0 +1,5 @@
+spring:
+  profiles.include: oauth,real-db
+  jpa.show-sql: false
+  h2.console.enabled: true
+  session.store-type: jdbc
